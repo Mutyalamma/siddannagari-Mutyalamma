@@ -1,0 +1,60 @@
+package raj;
+
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.util.Set;
+
+import javax.swing.event.MenuKeyEvent;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class keyboardactions {
+	WebDriver driver;
+	String url1="https://opensource-demo.orangehrmlive.com/web/index.php/auth/login";
+	String url2="https://demoqa.com/browser-windows";
+	@BeforeTest
+	public void test1() throws InterruptedException 
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.get(url1);
+		driver.manage().window().maximize();
+		Thread.sleep(5000);
+		
+	}
+@Test
+public void test3() throws InterruptedException 
+{
+	String str=driver.getWindowHandle();
+	System.out.println(str);
+	
+	Set<String> st=driver.getWindowHandles();
+	System.out.println(st);
+	for(String handles:st) 
+	{
+	
+	driver.findElement(By.id("tabButton")).click();
+	Thread.sleep(5000);
+	driver.findElement(By.id("windowButton")).click();
+	Thread.sleep(6000);
+	driver.findElement(By.id("messageWindowButton")).click();
+	driver.getTitle();
+	}
+	driver.switchTo().window(str);
+	driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login");
+}
+	
+}
+	
+
+
+
