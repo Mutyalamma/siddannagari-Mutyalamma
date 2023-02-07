@@ -26,7 +26,7 @@ public class keyboardactions {
 	{
 		WebDriverManager.chromedriver().setup();
 		driver=new ChromeDriver();
-		driver.get(url1);
+		driver.get(url2);
 		driver.manage().window().maximize();
 		Thread.sleep(5000);
 		
