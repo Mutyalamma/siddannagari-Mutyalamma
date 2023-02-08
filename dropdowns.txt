@@ -1,0 +1,81 @@
+package raj;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class dropdowns {
+	WebDriver driver;
+	String url1="https://rahulshettyacademy.com/dropdownsPractise/";
+	String url2="https://demoqa.com/browser-windows";
+	@BeforeTest
+	public void test1() throws InterruptedException 
+	{
+		WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.get(url1);
+		driver.manage().window().maximize();
+		Thread.sleep(5000);
+
+}
+	
+//@Test
+public void staticd() 
+{
+	WebElement we= driver.findElement(By.name("ctl00$mainContent$DropDownListCurrency"));
+	Select dropdown= new Select (we);
+	//dropdown.selectByVisibleText("AED");
+	//dropdown.selectByIndex(3);
+	dropdown.selectByValue("AED");
+	}
+//@Test
+public void normald() throws InterruptedException 
+{
+	WebElement web=driver.findElement(By.id("divpaxinfo"));
+	web.click();
+	Thread.sleep(5000);
+	driver.findElement(By.className("guestlbl"));
+	WebElement we =driver.findElement(By.id("hrefIncAdt"));
+	we.click();
+	Thread.sleep(5000);
+	
+	WebElement web1= driver.findElement(By.id("hrefIncChd"));
+	web1.click();
+	Thread.sleep(5000);
+	
+	WebElement web2= driver.findElement(By.id("hrefIncInf"));
+	web2.click();
+	Thread.sleep(5000);
+	WebElement web3=driver.findElement(By.className("buttonN"));
+	web3.click();
+	}
+//@Test
+public void dynamicdrop() throws InterruptedException 
+{
+	
+	driver.findElement(By.id("ctl00_mainContent_ddl_originStation1_CTXT")).click();
+	driver.findElement(By.xpath("//a[contains(text(),'Bengaluru (BLR)')]")).click();
+	Thread.sleep(5000);
+	driver.findElement(By.xpath("(//a[@text='Chennai (MAA)'])[2]")).click();
+	Thread.sleep(5000);	
+}
+@Test 
+public void departdropdown() throws InterruptedException 
+{
+	driver.findElement(By.name("ctl00$mainContent$view_date1")).click();
+	driver.findElement(By.xpath("//body[1]/div[1]/div[1]/table[1]/tbody[1]/tr[2]/td[7]/a[1]")).click();
+	Thread.sleep(5000);
+	driver.findElement(By.name("ctl00$mainContent$view_date2")).click();
+	Thread.sleep(5000);
+	driver.findElement(By.xpath("//body[1]/div[1]/div[1]/table[1]/tbody[1]/tr[3]/td[1]/a[1]")).click();
+	Thread.sleep(5000);
+	
+	
+}
+}
